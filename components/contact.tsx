@@ -1,0 +1,221 @@
+"use client"
+
+import type React from "react"
+
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Card, CardContent } from "@/components/ui/card"
+import { Mail, Linkedin, Youtube, Send, MapPin } from "lucide-react"
+
+interface ContactProps {
+  language: "es" | "en"
+}
+
+const translations = {
+  es: {
+    title: "Contacto",
+    subtitle: "¿Tienes un proyecto en mente? ¡Hablemos!",
+    form: {
+      name: "Nombre",
+      email: "Correo electrónico",
+      message: "Mensaje",
+      send: "Enviar mensaje",
+      namePlaceholder: "Tu nombre completo",
+      emailPlaceholder: "tu@email.com",
+      messagePlaceholder: "Cuéntame sobre tu proyecto...",
+    },
+    info: {
+      title: "Información de contacto",
+      email: "Correo electrónico",
+      location: "Ubicación",
+      locationValue: "Argentina",
+      social: "Redes sociales",
+    },
+    success: "¡Mensaje enviado correctamente!",
+  },
+  en: {
+    title: "Contact",
+    subtitle: "Have a project in mind? Let's talk!",
+    form: {
+      name: "Name",
+      email: "Email",
+      message: "Message",
+      send: "Send message",
+      namePlaceholder: "Your full name",
+      emailPlaceholder: "your@email.com",
+      messagePlaceholder: "Tell me about your project...",
+    },
+    info: {
+      title: "Contact information",
+      email: "Email",
+      location: "Location",
+      locationValue: "Argentina",
+      social: "Social media",
+    },
+    success: "Message sent successfully!",
+  },
+}
+
+export default function Contact({ language }: ContactProps) {
+  const t = translations[language]
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    // Simulate form submission
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+
+    setShowSuccess(true)
+    setFormData({ name: "", email: "", message: "" })
+    setIsSubmitting(false)
+
+    setTimeout(() => setShowSuccess(false), 3000)
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }))
+  }
+
+  return (
+    <section id="contact" className="py-20 bg-muted/30">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-foreground mb-4 text-balance">{t.title}</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">{t.subtitle}</p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {/* Contact Form */}
+          <Card className="border-border/50 shadow-lg">
+            <CardContent className="p-8">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <Input
+                    name="name"
+                    placeholder={t.form.namePlaceholder}
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="h-12"
+                  />
+                </div>
+                <div>
+                  <Input
+                    name="email"
+                    type="email"
+                    placeholder={t.form.emailPlaceholder}
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="h-12"
+                  />
+                </div>
+                <div>
+                  <Textarea
+                    name="message"
+                    placeholder={t.form.messagePlaceholder}
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={6}
+                    className="resize-none"
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full h-12 bg-accent hover:bg-accent/90 text-accent-foreground font-medium"
+                >
+                  {isSubmitting ? (
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 border-2 border-accent-foreground/30 border-t-accent-foreground rounded-full animate-spin" />
+                      {language === "es" ? "Enviando..." : "Sending..."}
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-2">
+                      <Send className="w-4 h-4" />
+                      {t.form.send}
+                    </div>
+                  )}
+                </Button>
+                {showSuccess && <div className="text-center text-accent font-medium">{t.success}</div>}
+              </form>
+            </CardContent>
+          </Card>
+
+          {/* Contact Information */}
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-semibold text-foreground mb-6">{t.info.title}</h3>
+            </div>
+
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-accent" />
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">{t.info.email}</p>
+                  <a href="mailto:facundo@example.com" className="text-accent hover:text-accent/80 transition-colors">
+                    facundo@example.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-accent" />
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">{t.info.location}</p>
+                  <p className="text-muted-foreground">{t.info.locationValue}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-8">
+              <h4 className="text-lg font-semibold text-foreground mb-4">{t.info.social}</h4>
+              <div className="flex gap-4">
+                <a
+                  href="https://linkedin.com/in/facundo-guzman"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center hover:bg-accent/40 transition-colors group"
+                >
+                  <Linkedin className="w-6 h-6 text-accent group-hover:scale-110 transition-transform" />
+                </a>
+                <a
+                  href="mailto:facundo@example.com"
+                  className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center hover:bg-accent/40 transition-colors group"
+                >
+                  <Mail className="w-6 h-6 text-accent group-hover:scale-110 transition-transform" />
+                </a>
+                <a
+                  href="https://youtube.com/@facundo-dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center hover:bg-accent/40 transition-colors group"
+                >
+                  <Youtube className="w-6 h-6 text-accent group-hover:scale-110 transition-transform" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

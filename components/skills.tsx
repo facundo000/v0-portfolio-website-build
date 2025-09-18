@@ -1,0 +1,127 @@
+"use client"
+
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import Image from "next/image"
+
+interface SkillsProps {
+  language: "es" | "en"
+}
+
+const translations = {
+  es: {
+    title: "Habilidades",
+    technicalSkills: "Habilidades Técnicas",
+    softSkills: "Habilidades Blandas",
+    softSkillsList: [
+      "Trabajo en equipo",
+      "Comunicación efectiva",
+      "Resolución de problemas",
+      "Pensamiento crítico",
+      "Adaptabilidad",
+      "Liderazgo",
+      "Gestión del tiempo",
+      "Creatividad",
+    ],
+  },
+  en: {
+    title: "Skills",
+    technicalSkills: "Technical Skills",
+    softSkills: "Soft Skills",
+    softSkillsList: [
+      "Teamwork",
+      "Effective communication",
+      "Problem solving",
+      "Critical thinking",
+      "Adaptability",
+      "Leadership",
+      "Time management",
+      "Creativity",
+    ],
+  },
+}
+
+const technicalSkills = [
+  { name: "React", logo: "/react-logo.png" },
+  { name: "Next.js", logo: "/nextjs-logo.png" },
+  { name: "TypeScript", logo: "/typescript-logo.png" },
+  { name: "Node.js", logo: "/nodejs-logo.png" },
+  { name: "Python", logo: "/python-logo.png" },
+  { name: "PostgreSQL", logo: "/postgresql-logo.png" },
+  { name: "MongoDB", logo: "/mongodb-logo.png" },
+  { name: "Docker", logo: "/docker-logo.png" },
+  { name: "AWS", logo: "/aws-logo.png" },
+  { name: "Git", logo: "/placeholder-zixd0.png" },
+  { name: "Tailwind CSS", logo: "/tailwind-css-logo.png" },
+  { name: "Figma", logo: "/figma-logo.png" },
+]
+
+export default function Skills({ language }: SkillsProps) {
+  const t = translations[language]
+
+  return (
+    <section id="skills" className="py-20 bg-background">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2
+            className="text-4xl md:text-5xl font-black mb-4 text-balance"
+            style={{ fontFamily: "var(--font-montserrat)" }}
+          >
+            {t.title}
+          </h2>
+          <div className="w-24 h-1 bg-primary mx-auto"></div>
+        </div>
+
+        <div className="max-w-6xl mx-auto">
+          {/* Technical Skills */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold mb-8 text-center text-foreground">{t.technicalSkills}</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+              {technicalSkills.map((skill, index) => (
+                <Card
+                  key={index}
+                  className="group hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
+                >
+                  <CardContent className="p-6 text-center">
+                    <div className="mb-4 flex justify-center">
+                      <Image
+                        src={skill.logo || "/placeholder.svg"}
+                        alt={`${skill.name} logo`}
+                        width={60}
+                        height={60}
+                        className="group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <h4 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors">
+                      {skill.name}
+                    </h4>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Soft Skills */}
+          <div>
+            <h3 className="text-2xl font-bold mb-8 text-center text-foreground">{t.softSkills}</h3>
+            <Card className="hover:shadow-lg transition-shadow duration-300">
+              <CardContent className="p-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {t.softSkillsList.map((skill, index) => (
+                    <Badge
+                      key={index}
+                      variant="outline"
+                      className="p-3 text-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-300 cursor-default"
+                    >
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
