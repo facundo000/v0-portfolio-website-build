@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Github, ExternalLink, Play } from "lucide-react"
 import Image from "next/image"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 interface ProjectsProps {
   language: "es" | "en"
@@ -97,6 +98,7 @@ const projects = [
 export default function Projects({ language }: ProjectsProps) {
   const t = translations[language]
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 })
 
   return (
     <section id="projects" className="py-20 bg-muted/30">
@@ -112,7 +114,12 @@ export default function Projects({ language }: ProjectsProps) {
         </div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div
+            ref={ref}
+            className={`grid lg:grid-cols-2 gap-8 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
             {projects.map((project) => (
               <Card
                 key={project.id}

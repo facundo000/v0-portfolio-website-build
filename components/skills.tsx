@@ -3,6 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 interface SkillsProps {
   language: "es" | "en"
@@ -58,6 +59,8 @@ const technicalSkills = [
 
 export default function Skills({ language }: SkillsProps) {
   const t = translations[language]
+  const technicalRef = useScrollAnimation({ threshold: 0.1 })
+  const softSkillsRef = useScrollAnimation({ threshold: 0.1 })
 
   return (
     <section id="skills" className="py-20 bg-background">
@@ -76,7 +79,12 @@ export default function Skills({ language }: SkillsProps) {
           {/* Technical Skills */}
           <div className="mb-16">
             <h3 className="text-2xl font-bold mb-8 text-center text-foreground">{t.technicalSkills}</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            <div
+              ref={technicalRef.ref}
+              className={`grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 transition-all duration-1000 ${
+                technicalRef.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
+            >
               {technicalSkills.map((skill, index) => (
                 <Card
                   key={index}
@@ -104,21 +112,28 @@ export default function Skills({ language }: SkillsProps) {
           {/* Soft Skills */}
           <div>
             <h3 className="text-2xl font-bold mb-8 text-center text-foreground">{t.softSkills}</h3>
-            <Card className="hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-8">
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {t.softSkillsList.map((skill, index) => (
-                    <Badge
-                      key={index}
-                      variant="outline"
-                      className="p-3 text-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-300 cursor-default"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+            <div
+              ref={softSkillsRef.ref}
+              className={`transition-all duration-1000 delay-200 ${
+                softSkillsRef.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
+            >
+              <Card className="hover:shadow-lg transition-shadow duration-300">
+                <CardContent className="p-8">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {t.softSkillsList.map((skill, index) => (
+                      <Badge
+                        key={index}
+                        variant="outline"
+                        className="p-3 text-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-300 cursor-default"
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </div>

@@ -34,6 +34,7 @@ const navigationSections = [
 
 export default function FloatingNav() {
   const [activeSection, setActiveSection] = useState("home")
+  const [isVisible, setIsVisible] = useState(true)
   const { language } = useLanguage()
 
   useEffect(() => {
@@ -55,17 +56,13 @@ export default function FloatingNav() {
         .filter(Boolean)
 
       const viewportHeight = window.innerHeight
-      const scrollThreshold = viewportHeight * 0.3 // 30% of viewport height
+      const scrollThreshold = viewportHeight * 0.3
 
-      // Find section that crosses the threshold line (30% from top)
       let currentSection = "home"
 
-      // Check from bottom to top to handle overlapping cases
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i]
         if (section) {
-          // Section is considered active if its top is above the threshold
-          // and its bottom is below the threshold
           if (section.top <= scrollThreshold && section.bottom > scrollThreshold) {
             currentSection = section.id
             break
@@ -73,7 +70,6 @@ export default function FloatingNav() {
         }
       }
 
-      // Special case: if we're near the bottom of the page, activate the last section
       const documentHeight = document.documentElement.scrollHeight
       const windowHeight = window.innerHeight
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop
@@ -82,12 +78,14 @@ export default function FloatingNav() {
         currentSection = "contact"
       }
 
-      // Special case: if we're at the very top, activate home
       if (scrollTop < 100) {
         currentSection = "home"
       }
 
       setActiveSection(currentSection)
+
+      const distanceFromBottom = documentHeight - (scrollTop + windowHeight)
+      setIsVisible(distanceFromBottom > 400)
     }
 
     handleScroll()
@@ -103,7 +101,11 @@ export default function FloatingNav() {
   }
 
   return (
-    <nav className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
+    <nav
+      className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20 pointer-events-none"
+      }`}
+    >
       <div className="bg-primary/90 backdrop-blur-md rounded-full px-6 py-3 shadow-lg border border-primary/20">
         <div className="flex items-center space-x-4">
           {navigationSections.map((section) => {

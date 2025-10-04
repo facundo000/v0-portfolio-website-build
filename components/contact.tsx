@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Mail, Linkedin, Youtube, Send, MapPin } from "lucide-react"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 interface ContactProps {
   language: "es" | "en"
@@ -67,6 +68,8 @@ export default function Contact({ language }: ContactProps) {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
+  const formRef = useScrollAnimation({ threshold: 0.2 })
+  const infoRef = useScrollAnimation({ threshold: 0.2 })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -99,65 +102,77 @@ export default function Contact({ language }: ContactProps) {
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <Card className="border-border/50 shadow-lg">
-            <CardContent className="p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <Input
-                    name="name"
-                    placeholder={t.form.namePlaceholder}
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="h-12"
-                  />
-                </div>
-                <div>
-                  <Input
-                    name="email"
-                    type="email"
-                    placeholder={t.form.emailPlaceholder}
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="h-12"
-                  />
-                </div>
-                <div>
-                  <Textarea
-                    name="message"
-                    placeholder={t.form.messagePlaceholder}
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={6}
-                    className="resize-none"
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full h-12 bg-accent hover:bg-accent/90 text-accent-foreground font-medium"
-                >
-                  {isSubmitting ? (
-                    <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 border-2 border-accent-foreground/30 border-t-accent-foreground rounded-full animate-spin" />
-                      {language === "es" ? "Enviando..." : "Sending..."}
-                    </div>
-                  ) : (
-                    <div className="flex items-center gap-2">
-                      <Send className="w-4 h-4" />
-                      {t.form.send}
-                    </div>
-                  )}
-                </Button>
-                {showSuccess && <div className="text-center text-accent font-medium">{t.success}</div>}
-              </form>
-            </CardContent>
-          </Card>
+          <div
+            ref={formRef.ref}
+            className={`transition-all duration-1000 ${
+              formRef.isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+            }`}
+          >
+            <Card className="border-border/50 shadow-lg">
+              <CardContent className="p-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <Input
+                      name="name"
+                      placeholder={t.form.namePlaceholder}
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="h-12"
+                    />
+                  </div>
+                  <div>
+                    <Input
+                      name="email"
+                      type="email"
+                      placeholder={t.form.emailPlaceholder}
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="h-12"
+                    />
+                  </div>
+                  <div>
+                    <Textarea
+                      name="message"
+                      placeholder={t.form.messagePlaceholder}
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={6}
+                      className="resize-none"
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full h-12 bg-accent hover:bg-accent/90 text-accent-foreground font-medium"
+                  >
+                    {isSubmitting ? (
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 border-2 border-accent-foreground/30 border-t-accent-foreground rounded-full animate-spin" />
+                        {language === "es" ? "Enviando..." : "Sending..."}
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2">
+                        <Send className="w-4 h-4" />
+                        {t.form.send}
+                      </div>
+                    )}
+                  </Button>
+                  {showSuccess && <div className="text-center text-accent font-medium">{t.success}</div>}
+                </form>
+              </CardContent>
+            </Card>
+          </div>
 
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div
+            ref={infoRef.ref}
+            className={`space-y-8 transition-all duration-1000 delay-200 ${
+              infoRef.isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
+            }`}
+          >
             <div>
               <h3 className="text-2xl font-semibold text-foreground mb-6">{t.info.title}</h3>
             </div>

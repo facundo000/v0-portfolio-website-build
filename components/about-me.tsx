@@ -3,6 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { User, MapPin, Calendar, Heart } from "lucide-react"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 interface AboutMeProps {
   language: "es" | "en"
@@ -35,6 +36,7 @@ const translations = {
 
 export default function AboutMe({ language }: AboutMeProps) {
   const t = translations[language]
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 })
 
   return (
     <section id="about" className="py-20 bg-muted/30">
@@ -50,50 +52,57 @@ export default function AboutMe({ language }: AboutMeProps) {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <Card className="mb-8 hover:shadow-lg transition-shadow duration-300">
-            <CardContent className="p-8">
-              <p className="text-lg leading-relaxed text-muted-foreground mb-6 text-pretty">{t.description}</p>
+          <div
+            ref={ref}
+            className={`transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
+            <Card className="mb-8 hover:shadow-lg transition-shadow duration-300">
+              <CardContent className="p-8">
+                <p className="text-lg leading-relaxed text-muted-foreground mb-6 text-pretty">{t.description}</p>
 
-              <div className="grid md:grid-cols-3 gap-6 mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <MapPin className="h-5 w-5 text-primary" />
+                <div className="grid md:grid-cols-3 gap-6 mb-6">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <MapPin className="h-5 w-5 text-primary" />
+                    </div>
+                    <span className="text-sm text-muted-foreground">{t.location}</span>
                   </div>
-                  <span className="text-sm text-muted-foreground">{t.location}</span>
-                </div>
 
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <Calendar className="h-5 w-5 text-primary" />
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <Calendar className="h-5 w-5 text-primary" />
+                    </div>
+                    <span className="text-sm text-muted-foreground">{t.experience}</span>
                   </div>
-                  <span className="text-sm text-muted-foreground">{t.experience}</span>
-                </div>
 
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <Heart className="h-5 w-5 text-primary" />
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <Heart className="h-5 w-5 text-primary" />
+                    </div>
+                    <span className="text-sm text-muted-foreground">{t.passion}</span>
                   </div>
-                  <span className="text-sm text-muted-foreground">{t.passion}</span>
                 </div>
-              </div>
 
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                  <User className="h-5 w-5 text-primary" />
-                  {language === "es" ? "Intereses" : "Interests"}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {t.interests.map((interest, index) => (
-                    <Badge key={index} variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20">
-                      {interest}
-                    </Badge>
-                  ))}
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                    <User className="h-5 w-5 text-primary" />
+                    {language === "es" ? "Intereses" : "Interests"}
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {t.interests.map((interest, index) => (
+                      <Badge key={index} variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20">
+                        {interest}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              <p className="text-muted-foreground text-pretty">{t.personalNote}</p>
-            </CardContent>
-          </Card>
+                <p className="text-muted-foreground text-pretty">{t.personalNote}</p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </section>
