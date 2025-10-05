@@ -113,10 +113,10 @@ export default function Projects({ language }: ProjectsProps) {
           <div className="w-24 h-1 bg-primary mx-auto"></div>
         </div>
 
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div
             ref={ref}
-            className={`grid lg:grid-cols-2 gap-8 transition-all duration-1000 ${
+            className={`grid grid-cols-1 gap-8 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
@@ -131,9 +131,9 @@ export default function Projects({ language }: ProjectsProps) {
                   <Image
                     src={hoveredProject === project.id ? project.gif : project.image}
                     alt={project.title[language]}
-                    width={500}
-                    height={300}
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                    width={800}
+                    height={450}
+                    className="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="text-white text-center">
@@ -144,7 +144,7 @@ export default function Projects({ language }: ProjectsProps) {
                 </div>
 
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
+                  <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
                     {project.title[language]}
                   </h3>
 

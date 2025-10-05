@@ -102,12 +102,12 @@ export default function FloatingNav() {
 
   return (
     <nav
-      className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ${
+      className={`fixed bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20 pointer-events-none"
       }`}
     >
-      <div className="bg-primary/90 backdrop-blur-md rounded-full px-6 py-3 shadow-lg border border-primary/20">
-        <div className="flex items-center space-x-4">
+      <div className="bg-primary/90 backdrop-blur-md rounded-full px-3 md:px-6 py-2 md:py-3 shadow-lg border border-primary/20">
+        <div className="flex items-center space-x-2 md:space-x-4">
           {navigationSections.map((section) => {
             const Icon = section.icon
             const isActive = activeSection === section.id
@@ -116,17 +116,17 @@ export default function FloatingNav() {
               <button
                 key={section.id}
                 onClick={() => scrollToSection(section.id)}
-                className={`relative p-3 rounded-full transition-all duration-300 group ${
+                className={`relative p-2 md:p-3 rounded-full transition-all duration-300 group ${
                   isActive
                     ? "bg-background text-primary shadow-md"
                     : "text-secondary hover:text-accent hover:bg-primary/20"
                 }`}
                 title={section.label[language]}
               >
-                <Icon size={20} />
+                <Icon size={18} className="md:w-5 md:h-5" />
 
                 {/* Tooltip */}
-                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-background text-foreground text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-background text-foreground text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
                   {section.label[language]}
                 </div>
               </button>
