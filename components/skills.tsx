@@ -20,7 +20,6 @@ const translations = {
       "Resolución de problemas",
       "Pensamiento crítico",
       "Adaptabilidad",
-      "Liderazgo",
       "Gestión del tiempo",
       "Creatividad",
     ],
@@ -35,7 +34,6 @@ const translations = {
       "Problem solving",
       "Critical thinking",
       "Adaptability",
-      "Leadership",
       "Time management",
       "Creativity",
     ],
@@ -43,18 +41,15 @@ const translations = {
 }
 
 const technicalSkills = [
-  { name: "React", logo: "/react-logo.png" },
-  { name: "Next.js", logo: "/nextjs-logo.png" },
-  { name: "TypeScript", logo: "/typescript-logo.png" },
-  { name: "Node.js", logo: "/nodejs-logo.png" },
-  { name: "Python", logo: "/python-logo.png" },
-  { name: "PostgreSQL", logo: "/postgresql-logo.png" },
-  { name: "MongoDB", logo: "/mongodb-logo.png" },
-  { name: "Docker", logo: "/docker-logo.png" },
-  { name: "AWS", logo: "/aws-logo.png" },
-  { name: "Git", logo: "/placeholder-zixd0.png" },
-  { name: "Tailwind CSS", logo: "/tailwind-css-logo.png" },
-  { name: "Figma", logo: "/figma-logo.png" },
+  { name: "Angular", logo: "/angular-svgrepo-com.svg" },
+  { name: "NestJS", logo: "/nestjs-svgrepo-com.svg" },
+  { name: "PostgreSQL", logo: "/postgresql-logo-svgrepo-com.svg" },
+  { name: "Docker", logo: "/docker-svgrepo-com.svg" },
+  { name: "TailwindCSS", logo: "/tailwind-svgrepo-com.svg" },
+  { name: "MongoDB", logo: "/mongo-svgrepo-com.svg" },
+  { name: "SQL Server", logo: "/microsoftsqlserver-svgrepo-com.svg" },
+  { name: ".NET Core", logo: "/dotnet-svgrepo-com_wt.svg" },
+  { name: "Figma", logo: "/figma-svgrepo-com.svg" },
 ]
 
 export default function Skills({ language }: SkillsProps) {

@@ -30,34 +30,32 @@ const projects = [
   {
     id: 1,
     title: {
-      es: "E-commerce Moderno",
-      en: "Modern E-commerce",
+      es: "TechZone E-commerce",
+      en: "TechZone E-commerce",
     },
     description: {
-      es: "Plataforma de comercio electrónico completa con carrito de compras, pagos integrados y panel de administración. Desarrollada con Next.js, TypeScript y Stripe.",
-      en: "Complete e-commerce platform with shopping cart, integrated payments and admin panel. Built with Next.js, TypeScript and Stripe.",
+      es: "Plataforma de tienda virtual de electrónica con carrito de compras, pagos integrados y panel de administración. Construida bajo la metodología Scrum.",
+      en: "Online electronics store platform with a shopping cart, integrated payments, and an administration panel. Built using the Scrum methodology.",
     },
-    image: "/modern-ecommerce-website.png",
-    gif: "/placeholder-a8604.png",
+    image: "/techzone.webp",
+    gif: "/techzone_gif.gif",
     technologies: [
-      { name: "Next.js", logo: "/nextjs-logo.png" },
-      { name: "TypeScript", logo: "/typescript-logo.png" },
-      { name: "Stripe", logo: "/stripe-logo.png" },
-      { name: "PostgreSQL", logo: "/postgresql-logo.png" },
+      { name: "Node.js", logo: "/node-js-svgrepo-com.svg" },
+      { name: "PostgreSQL", logo: "/postgresql-logo-svgrepo-com.svg" },
     ],
-    github: "https://github.com/tu-usuario/ecommerce-project",
-    demo: "https://tu-ecommerce-demo.vercel.app",
-    video: "https://youtube.com/watch?v=demo-video",
+    github: "https://github.com/No-Country/C15-03-M-NodeReact",
+    demo: "https://techzone-nocountry.vercel.app/",
+    video: "https://www.youtube.com/watch?v=BBOxw6b5Wrk",
   },
   {
     id: 2,
     title: {
-      es: "Dashboard Analítico",
-      en: "Analytics Dashboard",
+      es: "NEKODE",
+      en: "NEKODE",
     },
     description: {
-      es: "Dashboard interactivo para visualización de datos con gráficos en tiempo real, filtros avanzados y exportación de reportes. Construido con React y D3.js.",
-      en: "Interactive dashboard for data visualization with real-time charts, advanced filters and report export. Built with React and D3.js.",
+      es: "Nekode es una plataforma edtech gamificada enfocada en la enseñanza de JavaScript. Transforma el aprendizaje en una experiencia interactiva mediante mecánicas de juego como niveles, vidas y ranking competitivo utilzando la API de OpenAI. Los usuarios pueden evaluar sus conocimientos a través de desafíos prácticos y recibir feedback personalizado, que identifica las áreas que deben reforzar.",
+      en: "Nekode is a gamified edtech platform focused on teaching JavaScript. It transforms learning into an interactive experience through game mechanics such as levels, lives, and competitive ranking using the OpenAI API. Users can assess their knowledge through practical challenges and receive personalized feedback, which identifies areas that need reinforcement.",
     },
     image: "/analytics-dashboard.png",
     gif: "/placeholder-9quhx.png",
@@ -69,7 +67,7 @@ const projects = [
     ],
     github: "https://github.com/tu-usuario/analytics-dashboard",
     demo: "https://tu-dashboard-demo.vercel.app",
-    video: "https://youtube.com/watch?v=demo-video-2",
+    video: "https://youtu.be/v_klkqSrgzw", //enlace de vide
   },
   {
     id: 3,

@@ -15,13 +15,13 @@ const translations = {
     downloadCV: "Descargar CV",
     contact: "Contacto",
     developer: "Desarrollador Full Stack",
-    subtitle: "Creando experiencias digitales excepcionales",
+    subtitle: "Creando experiencias digitales de principio a fin",
   },
   en: {
     downloadCV: "Download CV",
     contact: "Contact",
     developer: "Full Stack Developer",
-    subtitle: "Creating exceptional digital experiences",
+    subtitle: "Creating digital experiences from start to finish",
   },
 }
 
@@ -30,12 +30,12 @@ export default function Header({ language, setLanguage }: HeaderProps) {
 
   const handleDownloadCV = () => {
     // Aquí puedes agregar la lógica para descargar el CV
-    console.log("Descargando CV...")
+     window.open("https://mnf.red/facundo-nicolas_guzman-olariaga", "_blank");
   }
 
   const handleContact = () => {
     // Aquí puedes agregar la lógica para el contacto
-    window.location.href = "mailto:tu-email@ejemplo.com"
+    window.location.href = "mailto:facundo.guzman@mi.unc.edu.ar"
   }
 
   return (
@@ -64,7 +64,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             <div className="flex items-center gap-2">
               <Button variant="ghost" size="icon" asChild>
                 <a href="https://linkedin.com/in/tu-perfil" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="h-5 w-5" />
+                  <Linkedin className="h-5 w-5" />                  
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild>
@@ -81,7 +81,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
       <div className="container mx-auto px-4 text-center animate-fade-in-up pt-24">
         <div className="mb-8 animate-float">
           <Image
-            src="/professional-developer-portrait.png"
+            src="/avatar-perfil.webp"
             alt="Profile"
             width={200}
             height={200}
@@ -94,7 +94,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
           style={{ fontFamily: "var(--font-montserrat)" }}
         >
           <span className="text-foreground">Hola, soy </span>
-          <span className="text-primary">Tu Nombre</span>
+          <span className="text-primary">Facundo Nicolás Guzmán Olariaga</span>
         </h1>
 
         <h2 className="text-2xl md:text-3xl font-semibold text-muted-foreground mb-6 text-balance">{t.developer}</h2>
@@ -105,7 +105,9 @@ export default function Header({ language, setLanguage }: HeaderProps) {
           <Button onClick={handleDownloadCV} size="lg" className="gap-2">
             <Download className="h-5 w-5" />
             {t.downloadCV}
+            
           </Button>
+          {/* <a href="https://mnf.red/facundo-nicolas_guzman-olariaga" className="gap-2" target="_blank">{t.downloadCV}</a> */}
           <Button onClick={handleContact} variant="outline" size="lg" className="gap-2 bg-transparent">
             <Mail className="h-5 w-5" />
             {t.contact}

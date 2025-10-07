@@ -13,24 +13,24 @@ const translations = {
   es: {
     title: "Sobre Mí",
     description:
-      "Soy un desarrollador Full Stack apasionado por crear soluciones digitales innovadoras. Con experiencia en tecnologías modernas, me especializo en desarrollar aplicaciones web escalables y experiencias de usuario excepcionales.",
+      "Desarrollo aplicaciones web completas, desde el diseño del mockoup para el Front-End, hasta el diseño de la base de datos y la lógica del servidor para el Back-End. Pero, me gusta más el back-end y me estoy especializando en ello.",
     location: "Ciudad, País",
-    experience: "3+ años de experiencia",
+    experience: "2+ años de experiencia",
     passion: "Apasionado por la tecnología",
-    interests: ["Desarrollo Web", "UI/UX Design", "Inteligencia Artificial", "Open Source"],
+    interests: ["Desarrollo Web", "back-end", "Inteligencia Artificial", "front-end"],
     personalNote:
-      "Cuando no estoy programando, disfruto aprender nuevas tecnologías, contribuir a proyectos open source y explorar las últimas tendencias en desarrollo web.",
+      "Cuando no estoy programando, disfruto aprender nuevas tecnologías, ir a eventos tecnológicos o hackatones y resolver retos de programación.",
   },
   en: {
     title: "About Me",
     description:
-      "I am a Full Stack developer passionate about creating innovative digital solutions. With experience in modern technologies, I specialize in developing scalable web applications and exceptional user experiences.",
+      "I develop complete web applications, from designing the mockup for the front end to designing the database and server logic for the back end. However, I prefer the back end and am specializing in it.",
     location: "City, Country",
-    experience: "3+ years of experience",
+    experience: "2+ years of experience",
     passion: "Passionate about technology",
-    interests: ["Web Development", "UI/UX Design", "Artificial Intelligence", "Open Source"],
+    interests: ["Web Development", "back-end", "Artificial Intelligence", "front-end"],
     personalNote:
-      "When I'm not coding, I enjoy learning new technologies, contributing to open source projects, and exploring the latest trends in web development.",
+      "When I'm not coding, I enjoy learning new technologies, attending tech events or hackathons, and solving coding challenges.",
   },
 }
 
