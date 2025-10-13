@@ -177,19 +177,7 @@ export default function Contact({ language }: ContactProps) {
               <h3 className="text-2xl font-semibold text-foreground mb-6">{t.info.title}</h3>
             </div>
 
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
-                  <Mail className="w-6 h-6 text-accent" />
-                </div>
-                <div>
-                  <p className="font-medium text-foreground">{t.info.email}</p>
-                  <a href="mailto:facundo@example.com" className="text-accent hover:text-accent/80 transition-colors">
-                    facundo@example.com
-                  </a>
-                </div>
-              </div>
-
+            <div className="space-y-6">              
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
                   <MapPin className="w-6 h-6 text-accent" />
@@ -205,7 +193,7 @@ export default function Contact({ language }: ContactProps) {
               <h4 className="text-lg font-semibold text-foreground mb-4">{t.info.social}</h4>
               <div className="flex gap-4">
                 <a
-                  href="https://linkedin.com/in/facundo-guzman"
+                  href="https://www.linkedin.com/in/facundo-nicolas-guzman-olariaga-dev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center hover:bg-accent/40 transition-colors group"
@@ -213,13 +201,13 @@ export default function Contact({ language }: ContactProps) {
                   <Linkedin className="w-6 h-6 text-accent group-hover:scale-110 transition-transform" />
                 </a>
                 <a
-                  href="mailto:facundo@example.com"
+                  href="mailto:facundo.guzman@mi.unc.edu.ar"
                   className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center hover:bg-accent/40 transition-colors group"
                 >
                   <Mail className="w-6 h-6 text-accent group-hover:scale-110 transition-transform" />
                 </a>
                 <a
-                  href="https://youtube.com/@facundo-dev"
+                  href="https://www.youtube.com/@prototipoFreelance"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center hover:bg-accent/40 transition-colors group"

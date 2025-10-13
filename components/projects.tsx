@@ -30,6 +30,48 @@ const projects = [
   {
     id: 1,
     title: {
+      es: "Gomería Mitre",
+      en: "Mitre Tire Shop",
+    },
+    description: {
+      es: "Resuelve la necesidad de cotizar y comprar neumáticos de forma rápida y directa en Córdoba. Puse especial énfasis en el rendimiento web (Web Performance), implementando carga prioritaria de contenido (LCP) y lazy loading, además de asegurar un código con altos estándares de accesibilidad (a11y) y SEO. El flujo principal culmina en un carrito de compras interactivo que integra la API de WhatsApp para finalizar el pedido, simplificando el contacto con el cliente.",
+      en: "It addresses the need for quick and direct tire quotes and purchases in Córdoba. I placed special emphasis on web performance, implementing content priority loading (LCP) and lazy loading, in addition to ensuring the code meets high accessibility (A11y) and SEO standards. The main flow culminates in an interactive shopping cart that integrates the WhatsApp API to complete the order, simplifying customer contact.",
+    },
+    image: "/gomeria_mitre.webp",
+    gif: "/gomeria_mitre_g.gif",
+    technologies: [
+      { name: "Angular", logo: "/angular-svgrepo-com.svg" },
+      { name: "TailwindCSS", logo: "/tailwind-svgrepo-com.svg" },
+    ],
+    github: "https://github.com/facundo000",
+    demo: "https://gomeria-mitre.vercel.app",
+    video: "https://youtu.be/jxo0BqN6SPE",
+  },
+  {
+    id: 2,
+    title: {
+      es: "Bienes Raices",
+      en: "Real Estate",
+    },
+    description: {
+      es: "Portal web para buscar y listar propiedades inmobiliarias. Incluye filtros avanzados y un sistema de gestión de usuarios. El proyecto pasó por múltiples migraciones y mejoras de rendimiento.",
+      en: "Web portal for searching and listing real estate properties. Includes advanced filters and a user management system. The project underwent multiple migrations and performance improvements.",
+    },
+    image: "/BR-inicio.webp",
+    gif: "/bienesRaices_g.gif",
+    technologies: [
+      { name: "Angular", logo: "/angular-svgrepo-com.svg" },
+      { name: "NestJS", logo: "/nestjs-svgrepo-com.svg" },
+      { name: "PostgreSQL", logo: "/postgresql-logo-svgrepo-com.svg" },
+      { name: "Docker", logo: "/docker-svgrepo-com.svg" },
+    ],
+    github: "https://github.com/facundo000/backend-bienesRaices-nest",
+    demo: "https://bienesraices-angular.netlify.app",
+    video: "https://youtu.be/JY_Sums_t9Y",
+  },
+  {    
+    id: 4,
+    title: {
       es: "TechZone E-commerce",
       en: "TechZone E-commerce",
     },
@@ -48,7 +90,7 @@ const projects = [
     video: "https://www.youtube.com/watch?v=BBOxw6b5Wrk",
   },
   {
-    id: 2,
+    id: 3,
     title: {
       es: "NEKODE",
       en: "NEKODE",
@@ -57,40 +99,16 @@ const projects = [
       es: "Nekode es una plataforma edtech gamificada enfocada en la enseñanza de JavaScript. Transforma el aprendizaje en una experiencia interactiva mediante mecánicas de juego como niveles, vidas y ranking competitivo utilzando la API de OpenAI. Los usuarios pueden evaluar sus conocimientos a través de desafíos prácticos y recibir feedback personalizado, que identifica las áreas que deben reforzar.",
       en: "Nekode is a gamified edtech platform focused on teaching JavaScript. It transforms learning into an interactive experience through game mechanics such as levels, lives, and competitive ranking using the OpenAI API. Users can assess their knowledge through practical challenges and receive personalized feedback, which identifies areas that need reinforcement.",
     },
-    image: "/analytics-dashboard.png",
-    gif: "/placeholder-9quhx.png",
+    image: "/nekode.webp",
+    gif: "/nekode_g.gif",
     technologies: [
-      { name: "React", logo: "/react-logo.png" },
-      { name: "D3.js", logo: "/d3js-logo.png" },
-      { name: "Node.js", logo: "/nodejs-logo.png" },
-      { name: "MongoDB", logo: "/mongodb-logo.png" },
+      { name: "NestJS", logo: "/nestjs-svgrepo-com.svg" },
+      { name: "PostgreSQL", logo: "/postgresql-logo-svgrepo-com.svg" },      
     ],
     github: "https://github.com/tu-usuario/analytics-dashboard",
     demo: "https://tu-dashboard-demo.vercel.app",
-    video: "https://youtu.be/v_klkqSrgzw", //enlace de vide
-  },
-  {
-    id: 3,
-    title: {
-      es: "App de Gestión de Tareas",
-      en: "Task Management App",
-    },
-    description: {
-      es: "Aplicación colaborativa para gestión de proyectos con funcionalidades de tiempo real, asignación de tareas y seguimiento de progreso. Desarrollada con React Native.",
-      en: "Collaborative project management application with real-time features, task assignment and progress tracking. Built with React Native.",
-    },
-    image: "/task-management-app.png",
-    gif: "/placeholder-fr4tr.png",
-    technologies: [
-      { name: "React Native", logo: "/react-native-logo.png" },
-      { name: "Firebase", logo: "/firebase-logo.png" },
-      { name: "TypeScript", logo: "/typescript-logo.png" },
-      { name: "Expo", logo: "/placeholder-f57zr.png" },
-    ],
-    github: "https://github.com/tu-usuario/task-management-app",
-    demo: "https://expo.dev/@tu-usuario/task-app",
-    video: "https://youtube.com/watch?v=demo-video-3",
-  },
+    video: "https://youtu.be/v_klkqSrgzw",
+  },    
 ]
 
 export default function Projects({ language }: ProjectsProps) {

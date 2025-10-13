@@ -63,12 +63,12 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             {/* Social Links */}
             <div className="flex items-center gap-2">
               <Button variant="ghost" size="icon" asChild>
-                <a href="https://linkedin.com/in/tu-perfil" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/facundo-nicolas-guzman-olariaga-dev/" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-5 w-5" />                  
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild>
-                <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/facundo000" target="_blank" rel="noopener noreferrer">
                   <Github className="h-5 w-5" />
                 </a>
               </Button>
@@ -107,7 +107,6 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             {t.downloadCV}
             
           </Button>
-          {/* <a href="https://mnf.red/facundo-nicolas_guzman-olariaga" className="gap-2" target="_blank">{t.downloadCV}</a> */}
           <Button onClick={handleContact} variant="outline" size="lg" className="gap-2 bg-transparent">
             <Mail className="h-5 w-5" />
             {t.contact}

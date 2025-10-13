@@ -14,7 +14,7 @@ const translations = {
     title: "Sobre Mí",
     description:
       "Desarrollo aplicaciones web completas, desde el diseño del mockoup para el Front-End, hasta el diseño de la base de datos y la lógica del servidor para el Back-End. Pero, me gusta más el back-end y me estoy especializando en ello.",
-    location: "Ciudad, País",
+    location: "Córdoba, Argentina",
     experience: "2+ años de experiencia",
     passion: "Apasionado por la tecnología",
     interests: ["Desarrollo Web", "back-end", "Inteligencia Artificial", "front-end"],
