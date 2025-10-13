@@ -35,6 +35,7 @@ const translations = {
       social: "Redes sociales",
     },
     success: "¡Mensaje enviado correctamente!",
+    error: "Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.",
   },
   en: {
     title: "Contact",
@@ -56,40 +57,49 @@ const translations = {
       social: "Social media",
     },
     success: "Message sent successfully!",
+    error: "There was an error sending the message. Please try again.",
   },
 }
 
 export default function Contact({ language }: ContactProps) {
   const t = translations[language]
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
+  const [showError, setShowError] = useState(false)
   const formRef = useScrollAnimation({ threshold: 0.2 })
   const infoRef = useScrollAnimation({ threshold: 0.2 })
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setShowError(false)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    const form = e.currentTarget
+    const formData = new FormData(form)
 
-    setShowSuccess(true)
-    setFormData({ name: "", email: "", message: "" })
-    setIsSubmitting(false)
+    try {
+      const response = await fetch("https://formspree.io/f/xgebjaad", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      })
 
-    setTimeout(() => setShowSuccess(false), 3000)
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }))
+      if (response.ok) {
+        setShowSuccess(true)
+        form.reset()
+        setTimeout(() => setShowSuccess(false), 5000)
+      } else {
+        setShowError(true)
+        setTimeout(() => setShowError(false), 5000)
+      }
+    } catch (error) {
+      setShowError(true)
+      setTimeout(() => setShowError(false), 5000)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -112,32 +122,15 @@ export default function Contact({ language }: ContactProps) {
               <CardContent className="p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <Input
-                      name="name"
-                      placeholder={t.form.namePlaceholder}
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="h-12"
-                    />
+                    <Input name="name" placeholder={t.form.namePlaceholder} required className="h-12" />
                   </div>
                   <div>
-                    <Input
-                      name="email"
-                      type="email"
-                      placeholder={t.form.emailPlaceholder}
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="h-12"
-                    />
+                    <Input name="email" type="email" placeholder={t.form.emailPlaceholder} required className="h-12" />
                   </div>
                   <div>
                     <Textarea
                       name="message"
                       placeholder={t.form.messagePlaceholder}
-                      value={formData.message}
-                      onChange={handleChange}
                       required
                       rows={6}
                       className="resize-none"
@@ -161,6 +154,7 @@ export default function Contact({ language }: ContactProps) {
                     )}
                   </Button>
                   {showSuccess && <div className="text-center text-accent font-medium">{t.success}</div>}
+                  {showError && <div className="text-center text-destructive font-medium">{t.error}</div>}
                 </form>
               </CardContent>
             </Card>
@@ -177,7 +171,7 @@ export default function Contact({ language }: ContactProps) {
               <h3 className="text-2xl font-semibold text-foreground mb-6">{t.info.title}</h3>
             </div>
 
-            <div className="space-y-6">              
+            <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
                   <MapPin className="w-6 h-6 text-accent" />

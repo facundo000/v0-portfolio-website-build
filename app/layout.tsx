@@ -14,9 +14,66 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: "Portfolio - Desarrollador Full Stack",
-  description: "Portfolio profesional de desarrollador Full Stack",
+  title: "Facundo Nicolás Guzmán Olariaga - Desarrollador Full Stack",
+  description:
+    "Portfolio profesional de Facundo Nicolás Guzmán Olariaga, desarrollador Full Stack especializado en Angular, NestJS, .NET Core y tecnologías web modernas.",
+  keywords: ["desarrollador full stack", "angular", "nestjs", "node.js", "portfolio", "web developer", "facundo guzman", ".net core", "postgresql","sql server"],
+  authors: [{ name: "Facundo Nicolás Guzmán Olariaga" }],
+  creator: "Facundo Nicolás Guzmán Olariaga",
+  publisher: "Facundo Nicolás Guzmán Olariaga",
   generator: "v0.app",
+  metadataBase: new URL("https://facundoguzman.site"),
+  alternates: {
+    canonical: "/",
+    languages: {
+      "es-ES": "/",
+      "en-US": "/en",
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_ES",
+    alternateLocale: ["en_US"],
+    url: "https://facundoguzman.site",
+    title: "Facundo Nicolás Guzmán Olariaga - Desarrollador Full Stack",
+    description:
+      "Portfolio profesional de desarrollador Full Stack especializado en Angular, NestJS, .NET Core y tecnologías web modernas.",
+    siteName: "Portfolio Facundo Guzmán",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Portfolio Facundo Nicolás Guzmán Olariaga",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Facundo Nicolás Guzmán Olariaga - Desarrollador Full Stack",
+    description:
+      "Portfolio profesional de desarrollador Full Stack especializado en Angular, NestJS, .NET Core y tecnologías web modernas.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  manifest: "/manifest.json",
 }
 
 export default function RootLayout({

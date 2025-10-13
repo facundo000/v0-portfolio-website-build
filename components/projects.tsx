@@ -69,7 +69,7 @@ const projects = [
     demo: "https://bienesraices-angular.netlify.app",
     video: "https://youtu.be/JY_Sums_t9Y",
   },
-  {    
+  {
     id: 4,
     title: {
       es: "TechZone E-commerce",
@@ -103,12 +103,12 @@ const projects = [
     gif: "/nekode_g.gif",
     technologies: [
       { name: "NestJS", logo: "/nestjs-svgrepo-com.svg" },
-      { name: "PostgreSQL", logo: "/postgresql-logo-svgrepo-com.svg" },      
+      { name: "PostgreSQL", logo: "/postgresql-logo-svgrepo-com.svg" },
     ],
     github: "https://github.com//facundo000/NEKODE_FG",
     demo: "https://nekode.vercel.app/",
     video: "https://youtu.be/v_klkqSrgzw",
-  },    
+  },
 ]
 
 export default function Projects({ language }: ProjectsProps) {
@@ -129,7 +129,7 @@ export default function Projects({ language }: ProjectsProps) {
           <div className="w-24 h-1 bg-primary mx-auto"></div>
         </div>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div
             ref={ref}
             className={`grid grid-cols-1 gap-8 transition-all duration-1000 ${
@@ -143,65 +143,66 @@ export default function Projects({ language }: ProjectsProps) {
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
               >
-                <div className="relative overflow-hidden">
-                  <Image
-                    src={hoveredProject === project.id ? project.gif : project.image}
-                    alt={project.title[language]}
-                    width={800}
-                    height={450}
-                    className="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="text-white text-center">
-                      <Play className="h-12 w-12 mx-auto mb-2" />
-                      <p className="text-sm">{language === "es" ? "Ver demo" : "View demo"}</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src={hoveredProject === project.id ? project.gif : project.image}
+                      alt={project.title[language]}
+                      width={800}
+                      height={800}
+                      className="w-full h-64 md:h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="text-white text-center">
+                        <Play className="h-12 w-12 mx-auto mb-2" />
+                        <p className="text-sm">{language === "es" ? "Ver demo" : "View demo"}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-
-                <CardContent className="p-6">
-                  <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
-                    {project.title[language]}
-                  </h3>
-
-                  <p className="text-muted-foreground mb-4 text-pretty leading-relaxed">
-                    {project.description[language]}
-                  </p>
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech, index) => (
-                      <div key={index} className="flex items-center gap-1 bg-muted rounded-full px-3 py-1">
-                        <Image src={tech.logo || "/placeholder.svg"} alt={`${tech.name} logo`} width={16} height={16} />
-                        <span className="text-xs font-medium text-muted-foreground">{tech.name}</span>
+                  <CardContent className="p-6 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
+                        {project.title[language]}
+                      </h3>
+                      <p className="text-muted-foreground mb-4 text-pretty leading-relaxed">
+                        {project.description[language]}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.technologies.map((tech, index) => (
+                          <div key={index} className="flex items-center gap-1 bg-muted rounded-full px-3 py-1">
+                            <Image
+                              src={tech.logo || "/placeholder.svg"}
+                              alt={`${tech.name} logo`}
+                              width={16}
+                              height={16}
+                            />
+                            <span className="text-xs font-medium text-muted-foreground">{tech.name}</span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex flex-wrap gap-3">
-                    <Button variant="outline" size="sm" asChild className="gap-2 bg-transparent">
-                      <a href={project.github} target="_blank" rel="noopener noreferrer">
-                        <Github className="h-4 w-4" />
-                        {t.viewCode}
-                      </a>
-                    </Button>
-
-                    <Button size="sm" asChild className="gap-2">
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="h-4 w-4" />
-                        {t.liveDemo}
-                      </a>
-                    </Button>
-
-                    <Button variant="secondary" size="sm" asChild className="gap-2">
-                      <a href={project.video} target="_blank" rel="noopener noreferrer">
-                        <Play className="h-4 w-4" />
-                        {t.videoDemo}
-                      </a>
-                    </Button>
-                  </div>
-                </CardContent>
+                    </div>
+                    <div className="flex flex-wrap gap-3">
+                      <Button variant="outline" size="sm" asChild className="gap-2 bg-transparent">
+                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+                          <Github className="h-4 w-4" />
+                          {t.viewCode}
+                        </a>
+                      </Button>
+                      <Button size="sm" asChild className="gap-2">
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="h-4 w-4" />
+                          {t.liveDemo}
+                        </a>
+                      </Button>
+                      <Button variant="secondary" size="sm" asChild className="gap-2">
+                        <a href={project.video} target="_blank" rel="noopener noreferrer">
+                          <Play className="h-4 w-4" />
+                          {t.videoDemo}
+                        </a>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </div>
               </Card>
             ))}
           </div>

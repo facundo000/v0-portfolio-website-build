@@ -1,0 +1,21 @@
+{
+  "name": "Facundo Nicolás Guzmán Olariaga - Portfolio",
+  "short_name": "FG Portfolio",
+  "description": "Portfolio profesional de desarrollador Full Stack",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D082F",
+  "theme_color": "#7C3AED",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
