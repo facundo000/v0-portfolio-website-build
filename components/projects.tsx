@@ -105,8 +105,8 @@ const projects = [
       { name: "NestJS", logo: "/nestjs-svgrepo-com.svg" },
       { name: "PostgreSQL", logo: "/postgresql-logo-svgrepo-com.svg" },      
     ],
-    github: "https://github.com/tu-usuario/analytics-dashboard",
-    demo: "https://tu-dashboard-demo.vercel.app",
+    github: "https://github.com//facundo000/NEKODE_FG",
+    demo: "https://nekode.vercel.app/",
     video: "https://youtu.be/v_klkqSrgzw",
   },    
 ]
