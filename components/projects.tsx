@@ -144,13 +144,14 @@ export default function Projects({ language }: ProjectsProps) {
                 onMouseLeave={() => setHoveredProject(null)}
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-                  <div className="relative overflow-hidden">
+                  <div className="relative overflow-hidden bg-muted aspect-square md:aspect-auto">
                     <Image
                       src={hoveredProject === project.id ? project.gif : project.image}
                       alt={project.title[language]}
-                      width={800}
-                      height={800}
-                      className="w-full h-64 md:h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      width={600}
+                      height={600}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      priority={false}
                     />
                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <div className="text-white text-center">
