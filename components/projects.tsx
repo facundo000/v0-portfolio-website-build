@@ -109,6 +109,26 @@ const projects = [
     demo: "https://nekode.vercel.app/",
     video: "https://youtu.be/v_klkqSrgzw",
   },
+  {
+    id: 5,
+    title: {
+      es: "CS",
+      en: "CS",
+    },
+    description: {
+      es: "Desarrollé una Landing Page para una tienda de electrónica que necesitaba convertir visitantes en clientes potenciales y diferenciarse en una zona con alta competencia. La solución se centró en una experiencia clara y orientada a la conversión, incorporando además un sistema de suscripción para fortalecer la fidelización y activar estrategias de retención.En el proceso reforcé prácticas de arquitectura frontend, animaciones orientadas a UX y despliegue moderno en la nube.",
+      en: "I developed a landing page for an electronics store that needed to convert visitors into leads and stand out in a highly competitive area. The solution focused on a clear, conversion-oriented experience, also incorporating a subscription system to strengthen customer loyalty and activate retention strategies. In the process, I reinforced best practices in frontend architecture, UX-driven animations, and modern cloud deployment.",
+    },
+    image: "/cs_landing_page.ac93b822f25e4e3c2624.webp",
+    gif: "/gif_cs.gif",
+    technologies: [
+      { name: "Angular", logo: "/angular-svgrepo-com.svg" },
+      { name: "TailwindCSS", logo: "/tailwind-svgrepo-com.svg" },
+    ],
+    github: "https://github.com/facundo000/landing-page-cs",
+    demo: "https://landing-page-cs-five.vercel.app/",
+    video: "https://www.youtube.com/watch?v=0GqxezGEx8M",
+  }
 ]
 
 export default function Projects({ language }: ProjectsProps) {
