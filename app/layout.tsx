@@ -84,6 +84,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} ${montserrat.variable}`}>
+        {/* Animated background layers */}
+        <div className="animated-bg" aria-hidden="true" />
+        <div className="animated-bg-waves" aria-hidden="true" />
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         <Analytics />
       </body>

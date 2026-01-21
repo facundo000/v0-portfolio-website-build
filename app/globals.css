@@ -122,7 +122,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
   }
 }
 
@@ -159,4 +159,121 @@ html {
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+/* Animated diagonal lines background - similar to wave pattern */
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  background: var(--background);
+}
+
+/* Main diagonal wave lines layer */
+.animated-bg::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: 
+    repeating-linear-gradient(
+      -35deg,
+      transparent 0px,
+      transparent 25px,
+      rgba(60, 40, 100, 0.4) 25px,
+      rgba(60, 40, 100, 0.4) 26px,
+      transparent 26px,
+      transparent 50px
+    ),
+    repeating-linear-gradient(
+      -35deg,
+      transparent 0px,
+      transparent 35px,
+      rgba(80, 50, 140, 0.25) 35px,
+      rgba(80, 50, 140, 0.25) 37px,
+      transparent 37px,
+      transparent 70px
+    );
+  animation: moveWaveLines 25s linear infinite;
+  will-change: transform;
+}
+
+/* Secondary wave layer for depth effect */
+.animated-bg::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: 
+    repeating-linear-gradient(
+      -35deg,
+      transparent 0px,
+      transparent 60px,
+      rgba(100, 60, 180, 0.15) 60px,
+      rgba(100, 60, 180, 0.15) 63px,
+      transparent 63px,
+      transparent 120px
+    ),
+    repeating-linear-gradient(
+      -35deg,
+      transparent 0px,
+      transparent 80px,
+      rgba(50, 30, 90, 0.3) 80px,
+      rgba(50, 30, 90, 0.3) 82px,
+      transparent 82px,
+      transparent 160px
+    );
+  animation: moveWaveLines 40s linear infinite reverse;
+  will-change: transform;
+}
+
+@keyframes moveWaveLines {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100px, 100px);
+  }
+}
+
+/* Additional subtle glow layer */
+.animated-bg-waves {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(168, 85, 247, 0.06) 0%, transparent 40%),
+    radial-gradient(ellipse at 60% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 45%);
+  animation: glowPulse 8s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .animated-bg::before,
+  .animated-bg::after,
+  .animated-bg-waves {
+    animation: none;
+  }
 }

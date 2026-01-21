@@ -15,7 +15,7 @@ export default function Portfolio() {
 
   return (
     <LanguageProvider>
-      <main className="min-h-screen bg-background">
+      <main className="min-h-screen bg-transparent">
         <Header language={language} setLanguage={setLanguage} />
         <AboutMe language={language} />
         <Skills language={language} />
