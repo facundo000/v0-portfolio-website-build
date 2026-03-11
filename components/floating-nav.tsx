@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Home, User, Code, Monitor, Mail } from "lucide-react"
+import { Home, User, Code, Star, Monitor, Mail } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 
 const navigationSections = [
@@ -19,6 +19,11 @@ const navigationSections = [
     id: "skills",
     icon: Code,
     label: { es: "Habilidades", en: "Skills" },
+  },
+  {
+    id: "featured",
+    icon: Star,
+    label: { es: "Destacado", en: "Featured" },
   },
   {
     id: "projects",
