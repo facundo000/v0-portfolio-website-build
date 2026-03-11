@@ -1,16 +1,26 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
-import { Montserrat } from "next/font/google"
+import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
 
-const montserrat = Montserrat({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-montserrat",
-  weight: ["400", "600", "700", "900"],
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700"],
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  weight: ["400", "500", "600", "700"],
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  weight: ["400", "500", "600"],
 })
 
 export const metadata: Metadata = {
@@ -83,7 +93,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} ${montserrat.variable}`}>
+      <body className={`font-sans ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}>
         {/* Animated background layers */}
         <div className="animated-bg" aria-hidden="true" />
         <div className="animated-bg-waves" aria-hidden="true" />
