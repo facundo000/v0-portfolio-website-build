@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Chrome, ExternalLink, Github, Star, Download } from "lucide-react"
 import Image from "next/image"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+import promoImage from "@/app/taskdown-logo.png"
 
 interface FeaturedProps {
   language: "es" | "en"
@@ -32,16 +33,16 @@ const translations = {
 // Datos de la extension - actualiza estos valores con tu extension real
 const featuredExtension = {
   name: {
-    es: "Mi Extensión de Chrome",
-    en: "My Chrome Extension",
+    es: "TaskDown, Mi Extensión de Chrome",
+    en: "TaskDown, My Chrome Extension",
   },
   description: {
-    es: "Describe aquí tu extensión de Chrome. Explica qué problema resuelve, sus características principales y por qué los usuarios deberían instalarla.",
-    en: "Describe your Chrome extension here. Explain what problem it solves, its main features, and why users should install it.",
+    es: "Es una extensión minimalista para gestionar tareas mediante contadores descendentes. Permite crear tareas con una cantidad inicial y descontarlas con un solo clic desde el popup. Está pensada para objetivos repetitivos o cuantificables —como ejercicios, páginas por leer o rutinas de entrenamiento— guardando todos los datos localmente en el navegador. Una herramienta ligera y sin distracciones para visualizar tu progreso y completar metas paso a paso.",
+    en: "It's a minimalist extension for managing tasks using countdown timers. It lets you create tasks with an initial amount and count them down with a single click from the popup. It's designed for repetitive or quantifiable goals—like exercises, pages to read, or workout routines—saving all the data locally in your browser. A lightweight and distraction-free tool for visualizing your progress and completing goals step by step.",
   },
-  image: "/placeholder-logo.png", // Actualiza con el logo de tu extension
-  chromeStoreUrl: "https://chrome.google.com/webstore", // URL de tu extension en Chrome Web Store
-  githubUrl: "https://github.com/facundo000", // URL del repositorio (opcional)
+  image: promoImage, 
+  chromeStoreUrl: "https://chromewebstore.google.com/detail/taskdown/eanfldhnkogfbnmedcpackmjbdinigcg", // URL de tu extension en Chrome Web Store
+  githubUrl: "https://github.com/facundo000/TaskDown-offline", // URL del repositorio (opcional)
   stats: {
     users: "100+",
     rating: "5.0",
