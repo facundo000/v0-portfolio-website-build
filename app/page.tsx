@@ -4,6 +4,7 @@ import { useState } from "react"
 import Header from "@/components/header"
 import AboutMe from "@/components/about-me"
 import Skills from "@/components/skills"
+import Featured from "@/components/featured"
 import Projects from "@/components/projects"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
@@ -19,6 +20,7 @@ export default function Portfolio() {
         <Header language={language} setLanguage={setLanguage} />
         <AboutMe language={language} />
         <Skills language={language} />
+        <Featured language={language} />
         <Projects language={language} />
         <Contact language={language} />
         <Footer language={language} />
