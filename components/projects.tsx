@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Github, ExternalLink, Play } from "lucide-react"
-import Image from "next/image"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Github, ExternalLink, Play } from "lucide-react";
+import Image from "next/image";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 interface ProjectsProps {
-  language: "es" | "en"
+  language: "es" | "en";
 }
 
 const translations = {
@@ -24,7 +24,7 @@ const translations = {
     liveDemo: "Live Demo",
     videoDemo: "Video Demo",
   },
-}
+};
 
 const projects = [
   {
@@ -34,18 +34,22 @@ const projects = [
       en: "Mitre Tire Shop",
     },
     description: {
-      es: "Resuelve la necesidad de cotizar y comprar neumáticos de forma rápida y directa en Córdoba. Puse especial énfasis en el rendimiento web (Web Performance), implementando carga prioritaria de contenido (LCP) y lazy loading, además de asegurar un código con altos estándares de accesibilidad (a11y) y SEO. El flujo principal culmina en un carrito de compras interactivo que integra la API de WhatsApp para finalizar el pedido, simplificando el contacto con el cliente.",
-      en: "It addresses the need for quick and direct tire quotes and purchases in Córdoba. I placed special emphasis on web performance, implementing content priority loading (LCP) and lazy loading, in addition to ensuring the code meets high accessibility (A11y) and SEO standards. The main flow culminates in an interactive shopping cart that integrates the WhatsApp API to complete the order, simplifying customer contact.",
+      es: "Resuelve la necesidad de cotizar y comprar neumáticos en Córdoba con foco en Web Performance (LCP, lazy loading), a11y y SEO. Incorpora una arquitectura event-driven que automatiza la gestión de imágenes: integra Cloudinary, n8n y Google Sheets para validar, optimizar (WebP, compresión y escalado) y sincronizar assets en tiempo real, con procesamiento concurrente y despliegue en Docker sobre Render.",
+      en: "It addresses the need to quote and purchase tires in Córdoba with a focus on Web Performance (LCP, lazy loading), A11Y, and SEO. It incorporates an event-driven architecture that automates image management: integrating Cloudinary, n8n, and Google Sheets to validate, optimize (WebP, compression, and scaling), and synchronize assets in real time, with concurrent processing and deployment on Docker over Render.",
     },
     image: "/gomeria_mitre.webp",
     gif: "/gomeria_mitre_g.gif",
     technologies: [
       { name: "Angular", logo: "/angular-svgrepo-com.svg" },
       { name: "TailwindCSS", logo: "/tailwind-svgrepo-com.svg" },
+      { name: "n8n", logo: "/n8n-color.svg" },
+      { name: "Docker", logo: "/docker-svgrepo-com.svg" },
+      { name: "PostgreSQL", logo: "/postgresql-logo-svgrepo-com.svg" },
+      { name: "Cloudinary", logo: "/cloudinary-svgrepo-com.svg" },
     ],
     github: "https://github.com/facundo000",
-    demo: "https://gomeria-mitre.vercel.app",
-    video: "https://youtu.be/jxo0BqN6SPE",
+    demo: "https://gomeriamitre.com.ar",
+    video: "https://youtu.be/2BWJKwRA5LE",
   },
   {
     id: 2,
@@ -128,13 +132,13 @@ const projects = [
     github: "https://github.com/facundo000/landing-page-cs",
     demo: "https://landing-page-cs-five.vercel.app/",
     video: "https://www.youtube.com/watch?v=0GqxezGEx8M",
-  }
-]
+  },
+];
 
 export default function Projects({ language }: ProjectsProps) {
-  const t = translations[language]
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null)
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 })
+  const t = translations[language];
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   return (
     <section id="projects" className="py-20 bg-muted/30">
@@ -153,7 +157,9 @@ export default function Projects({ language }: ProjectsProps) {
           <div
             ref={ref}
             className={`grid grid-cols-1 gap-8 transition-all duration-1000 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
             }`}
           >
             {projects.map((project) => (
@@ -166,7 +172,11 @@ export default function Projects({ language }: ProjectsProps) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
                   <div className="relative overflow-hidden bg-muted aspect-square md:aspect-auto">
                     <Image
-                      src={hoveredProject === project.id ? project.gif : project.image}
+                      src={
+                        hoveredProject === project.id
+                          ? project.gif
+                          : project.image
+                      }
                       alt={project.title[language]}
                       width={600}
                       height={600}
@@ -176,7 +186,9 @@ export default function Projects({ language }: ProjectsProps) {
                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <div className="text-white text-center">
                         <Play className="h-12 w-12 mx-auto mb-2" />
-                        <p className="text-sm">{language === "es" ? "Ver demo" : "View demo"}</p>
+                        <p className="text-sm">
+                          {language === "es" ? "Ver demo" : "View demo"}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -190,33 +202,60 @@ export default function Projects({ language }: ProjectsProps) {
                       </p>
                       <div className="flex flex-wrap gap-2 mb-6">
                         {project.technologies.map((tech, index) => (
-                          <div key={index} className="flex items-center gap-1 bg-muted rounded-full px-3 py-1">
+                          <div
+                            key={index}
+                            className="flex items-center gap-1 bg-muted rounded-full px-3 py-1"
+                          >
                             <Image
                               src={tech.logo || "/placeholder.svg"}
                               alt={`${tech.name} logo`}
                               width={16}
                               height={16}
                             />
-                            <span className="text-xs font-medium text-muted-foreground">{tech.name}</span>
+                            <span className="text-xs font-medium text-muted-foreground">
+                              {tech.name}
+                            </span>
                           </div>
                         ))}
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-3">
-                      <Button variant="outline" size="sm" asChild className="gap-2 bg-transparent">
-                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        asChild
+                        className="gap-2 bg-transparent"
+                      >
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <Github className="h-4 w-4" />
                           {t.viewCode}
                         </a>
                       </Button>
                       <Button size="sm" asChild className="gap-2">
-                        <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <ExternalLink className="h-4 w-4" />
                           {t.liveDemo}
                         </a>
                       </Button>
-                      <Button variant="secondary" size="sm" asChild className="gap-2">
-                        <a href={project.video} target="_blank" rel="noopener noreferrer">
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        asChild
+                        className="gap-2"
+                      >
+                        <a
+                          href={project.video}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <Play className="h-4 w-4" />
                           {t.videoDemo}
                         </a>
@@ -230,5 +269,5 @@ export default function Projects({ language }: ProjectsProps) {
         </div>
       </div>
     </section>
-  )
+  );
 }
