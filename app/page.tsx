@@ -6,6 +6,8 @@ import AboutMe from "@/components/about-me"
 import Skills from "@/components/skills"
 import Featured from "@/components/featured"
 import Projects from "@/components/projects"
+import Hackathons from "@/components/hackathons"
+import ComingSoon from "@/components/coming-soon"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
 import FloatingNav from "@/components/floating-nav"
@@ -22,6 +24,8 @@ export default function Portfolio() {
         <Skills language={language} />
         <Featured language={language} />
         <Projects language={language} />
+        <Hackathons language={language} />
+        <ComingSoon language={language} />
         <Contact language={language} />
         <Footer language={language} />
         <FloatingNav />

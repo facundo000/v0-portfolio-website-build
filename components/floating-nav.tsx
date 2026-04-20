@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Home, User, Code, Star, Monitor, Mail } from "lucide-react"
+import { Home, User, Code, Star, Monitor, Trophy, Rocket, Mail } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 
 const navigationSections = [
@@ -29,6 +29,16 @@ const navigationSections = [
     id: "projects",
     icon: Monitor,
     label: { es: "Proyectos", en: "Projects" },
+  },
+  {
+    id: "hackathons",
+    icon: Trophy,
+    label: { es: "Hackathones", en: "Hackathons" },
+  },
+  {
+    id: "coming-soon",
+    icon: Rocket,
+    label: { es: "En Desarrollo", en: "In Development" },
   },
   {
     id: "contact",
