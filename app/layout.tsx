@@ -24,15 +24,30 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Facundo Nicolás Guzmán Olariaga - Desarrollador Full Stack",
+  title: "Portfolio — Facundo Nicolás Guzmán Olariaga",
   description:
-    "Portfolio profesional de Facundo Nicolás Guzmán Olariaga, desarrollador Full Stack especializado en Angular, NestJS, .NET Core y tecnologías web modernas.",
-  keywords: ["desarrollador full stack", "angular", "nestjs", "node.js", "portfolio", "web developer", "facundo guzman", ".net core", "postgresql","sql server"],
+    "Desarrollador argentino apasionado por la arquitectura limpia y el tipado fuerte. Especializado en la creación de aplicaciones escalables dentro del ecosistema Angular.",
+  
+  keywords: [
+    "facundo guzmán",
+    "desarrollador angular",
+    "angular developer",
+    "arquitectura limpia",
+    "clean architecture",
+    "typescript",
+    "full stack developer",
+    "portfolio developer",
+    "nestjs",
+    "node.js",
+    ".net core",
+  ],
+
   authors: [{ name: "Facundo Nicolás Guzmán Olariaga" }],
   creator: "Facundo Nicolás Guzmán Olariaga",
   publisher: "Facundo Nicolás Guzmán Olariaga",
-  generator: "v0.app",
-  metadataBase: new URL("https://facundoguzman.site"),
+
+  metadataBase: new URL("https://facundo-nicolas-guzman-olariaga.vercel.app"),
+
   alternates: {
     canonical: "/",
     languages: {
@@ -40,49 +55,53 @@ export const metadata: Metadata = {
       "en-US": "/en",
     },
   },
+
   openGraph: {
     type: "website",
     locale: "es_ES",
     alternateLocale: ["en_US"],
-    url: "https://facundoguzman.site",
-    title: "Facundo Nicolás Guzmán Olariaga - Desarrollador Full Stack",
+    url: "https://facundo-nicolas-guzman-olariaga.vercel.app/",
+    title: "Portfolio — Facundo Nicolás Guzmán Olariaga",
     description:
-      "Portfolio profesional de desarrollador Full Stack especializado en Angular, NestJS, .NET Core y tecnologías web modernas.",
+      "Desarrollador argentino enfocado en arquitectura limpia y tipado fuerte. Creación de aplicaciones escalables con Angular.",
     siteName: "Portfolio Facundo Guzmán",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://res.cloudinary.com/di5ron95z/image/upload/v1776889197/Facundo_Nicol%C3%A1s_Guzm%C3%A1n_Olariaga.png",
         width: 1200,
         height: 630,
-        alt: "Portfolio Facundo Nicolás Guzmán Olariaga",
+        alt: "Portfolio de Facundo Nicolás Guzmán Olariaga",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Facundo Nicolás Guzmán Olariaga - Desarrollador Full Stack",
+    title: "Portfolio — Facundo Nicolás Guzmán Olariaga",
     description:
-      "Portfolio profesional de desarrollador Full Stack especializado en Angular, NestJS, .NET Core y tecnologías web modernas.",
-    images: ["/og-image.png"],
+      "Desarrollador argentino especializado en Angular, clean architecture y aplicaciones escalables.",
+    images: ["https://res.cloudinary.com/di5ron95z/image/upload/v1776889197/Facundo_Nicol%C3%A1s_Guzm%C3%A1n_Olariaga.png"],
   },
+
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
     },
   },
+
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
       { url: "/icon.svg", type: "image/svg+xml" },
     ],
-    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
   },
+
   manifest: "/manifest.json",
 }
 

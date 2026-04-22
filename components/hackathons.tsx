@@ -36,46 +36,26 @@ const translations = {
 const hackathons = [
   {
     id: 1,
-    title: { es: "Nombre del Hackathon 1", en: "Hackathon Project 1" },
+    title: { es: "Bugster Hackathon", en: "Bugster Hackathon" },
     description: {
-      es: "Descripción del proyecto desarrollado durante el hackathon. Qué problema resuelve, qué tecnologías se usaron y cuál fue el resultado.",
-      en: "Description of the project developed during the hackathon. What problem it solves, what technologies were used and what was the outcome.",
+      es: "Para crear EcoZen, se apunta a personas que quieran meditar. Sabemos que existen múltiples páginas donde hacen esto, pero EcoZen se enfoca en el estado de ánimo del usuario y permite seleccionar una planta que guíe la meditación.",
+      en: "EcoZen was created for people who want to meditate. We know there are many websites that do this, but EcoZen focuses on the user's mood and allows them to select a plant to guide their meditation.",
     },
-    image: "/placeholder-9quhx.png",
-    gif: "/placeholder-9quhx.png",
+    image: "/ecozen.webp",
+    gif: "/gif-ecozen.gif",
     technologies: [
-      { name: "React", logo: "/angular-svgrepo-com.svg" },
-      { name: "Node.js", logo: "/node-js-svgrepo-com.svg" },
+      { name: "Next.js", logo: "/next-dot-js-svgrepo-com.svg" },
+      { name: "Vercel", logo: "/vercel-logo-svgrepo-com.svg" },
     ],
     teamSize: 3,
-    duration: { es: "48 horas", en: "48 hours" },
+    duration: { es: "10 horas", en: "10 hours" },
     placement: { es: "1er lugar", en: "1st place" },
-    githubUrl: "#",
-    demoUrl: "#",
+    githubUrl: "",
+    demoUrl: "https://ecozenmindfulness.vercel.app/",
     videoUrl: "",
-    event: "Hackathon Event Name 2024",
+    event: "Bugster Hackathon 2025",
   },
-  {
-    id: 2,
-    title: { es: "Nombre del Hackathon 2", en: "Hackathon Project 2" },
-    description: {
-      es: "Descripción del proyecto desarrollado durante el hackathon. Qué problema resuelve, qué tecnologías se usaron y cuál fue el resultado.",
-      en: "Description of the project developed during the hackathon. What problem it solves, what technologies were used and what was the outcome.",
-    },
-    image: "/placeholder-a8604.png",
-    gif: "/placeholder-a8604.png",
-    technologies: [
-      { name: "Next.js", logo: "/nestjs-svgrepo-com.svg" },
-      { name: "MongoDB", logo: "/mongo-svgrepo-com.svg" },
-    ],
-    teamSize: 4,
-    duration: { es: "24 horas", en: "24 hours" },
-    placement: { es: "Top 3", en: "Top 3" },
-    githubUrl: "#",
-    demoUrl: "#",
-    videoUrl: "",
-    event: "Hackathon Event Name 2024",
-  },
+
 ]
 
 function HackathonCard({
@@ -98,7 +78,7 @@ function HackathonCard({
     >
       {/* Hackathon badge */}
       <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
-        <span className="flex items-center gap-1.5 bg-yellow-500/20 border border-yellow-500/40 text-yellow-400 text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">
+        <span className="flex items-center gap-1.5 bg-yellow-500/20 border border-yellow-500/40 text-yellow-950 text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">
           <Trophy size={11} />
           {t.badge}
         </span>

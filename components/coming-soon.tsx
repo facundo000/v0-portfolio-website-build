@@ -11,7 +11,7 @@ interface ComingSoonProps {
 const translations = {
   es: {
     title: "En Desarrollo",
-    subtitle: "Lo que viene — proyectos activos que están siendo construidos ahora mismo",
+    subtitle: "Lo que viene — proyecto activo que está siendo construido ahora mismo",
     badge: "En desarrollo",
     status: "Beta / Pruebas",
     viewCode: "Código",
@@ -36,27 +36,27 @@ const translations = {
 const inDevelopment = [
   {
     id: 1,
-    title: { es: "Nombre del SaaS", en: "SaaS Name" },
+    title: { es: "NaturStock", en: "SaaS Name" },
     tagline: {
-      es: "Una línea que resume qué hace tu SaaS",
-      en: "One line that summarizes what your SaaS does",
+      es: "NaturStock es un sistema integral de punto de venta (TPV) y gestión de inventario en la nube",
+      en: "NaturStock is a comprehensive cloud-based point of sale (POS) and inventory management system",
     },
     description: {
-      es: "Descripción más detallada del SaaS: qué problema resuelve, a quién va dirigido, cuál es el modelo de negocio y en qué etapa se encuentra actualmente.",
-      en: "More detailed description of the SaaS: what problem it solves, who it targets, what the business model is and what stage it is currently in.",
+      es: "Está diseñado específicamente para tiendas especializadas de alimentos saludables y a granel. Esta solución B2B atiende las necesidades únicas del sector mediante funcionalidades nativas como la venta fraccionada con conversión automática de unidades, el control estricto de lotes por fecha de caducidad (FEFO) y el etiquetado rápido de atributos dietéticos (vegano, sin TACC, etc.). Actualmente,está en fase de MVP (etapa de pruebas).",
+      en: "It is specifically designed for specialty health and bulk food stores. This B2B solution addresses the unique needs of the sector with native features such as fractional sales with automatic unit conversion, strict batch control by expiration date (FEFO), and quick labeling of dietary attributes (vegan, gluten-free, etc.). It is currently in the MVP (Minimum Viable Product) phase (testing stage).",
     },
-    image: "/placeholder-fr4tr.png",
+    image: "/dashboard-naturstock.webp",
     technologies: [
-      { name: "Next.js", logo: "/nestjs-svgrepo-com.svg" },
-      { name: "Node.js", logo: "/node-js-svgrepo-com.svg" },
+      { name: "NestJS", logo: "/nestjs-svgrepo-com.svg" },
+      { name: "Angular", logo: "/angular-svgrepo-com.svg" },
       { name: "PostgreSQL", logo: "/postgresql-logo-svgrepo-com.svg" },
       { name: "Docker", logo: "/docker-svgrepo-com.svg" },
     ],
     githubUrl: "",
     previewUrl: "",
     features: {
-      es: ["Feature 1", "Feature 2", "Feature 3"],
-      en: ["Feature 1", "Feature 2", "Feature 3"],
+      es: ["Arquitectura Multi-tenant", "Motor de Venta Fraccionada", "Gestión de Lotes (Algoritmo FEFO)", "Alertas de Vencimiento", "Punto de Venta (TPV) Optimizado", "Auditoría y Trazabilidad"],
+      en: ["Multi-tenant Architecture", "Partial Sales Engine", "Batch Management (FEFO Algorithm)", "Expiration Alerts", "Optimized Point of Sale (POS)", "Audit and Traceability"],
     },
     progress: 60,
   },
@@ -206,10 +206,10 @@ export default function ComingSoon({ language }: ComingSoonProps) {
                     {t.viewProject}
                   </a>
                 )}
-                <button className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium bg-white/8 border border-white/10 text-white/50 cursor-default">
+                {/* <button className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium bg-white/8 border border-white/10 text-white/50 cursor-default">
                   <Bell size={13} />
                   {t.followProgress}
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
