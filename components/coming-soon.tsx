@@ -87,25 +87,37 @@ export default function ComingSoon({ language }: ComingSoonProps) {
           <div className="mt-5 h-px w-24 bg-gradient-to-r from-transparent via-accent/50 to-transparent mx-auto" />
         </div>
 
-        {/* Main card */}
+        {/* Main card - macOS Window Style */}
         <div
           ref={cardRef}
-          className={`relative rounded-2xl border border-accent/20 bg-white/5 backdrop-blur-sm overflow-hidden transition-all duration-700 ${
+          className={`relative rounded-xl border border-white/10 bg-[#1e1e1e] overflow-hidden shadow-2xl transition-all duration-700 ${
             cardVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
-          {/* Subtle glow border effect */}
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/5 via-transparent to-purple-500/5 pointer-events-none" />
+          {/* macOS Window Title Bar */}
+          <div className="flex items-center justify-between px-4 py-3 bg-[#2d2d2d] border-b border-white/5">
+            {/* Traffic lights */}
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-[#ff5f57] hover:bg-[#ff5f57]/80 transition-colors cursor-pointer" />
+              <div className="w-3 h-3 rounded-full bg-[#febc2e] hover:bg-[#febc2e]/80 transition-colors cursor-pointer" />
+              <div className="w-3 h-3 rounded-full bg-[#28c840] hover:bg-[#28c840]/80 transition-colors cursor-pointer" />
+            </div>
+            
+            {/* Window title */}
+            <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
+              <span className="text-white/50 text-sm font-medium">{project.title[language]}</span>
+            </div>
 
-          {/* Badge */}
-          <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
-            <span className="flex items-center gap-1.5 bg-accent/20 border border-accent/40 text-accent text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm animate-pulse">
-              <Wrench size={11} />
-              {t.badge}
-            </span>
-            <span className="bg-black/40 border border-white/10 text-white/60 text-xs px-2 py-1 rounded-full backdrop-blur-sm">
-              {t.status}
-            </span>
+            {/* Status badges */}
+            <div className="flex items-center gap-2">
+              <span className="flex items-center gap-1.5 bg-accent/20 border border-accent/40 text-accent text-xs font-semibold px-2.5 py-0.5 rounded-full animate-pulse">
+                <Wrench size={10} />
+                {t.badge}
+              </span>
+              <span className="bg-white/5 border border-white/10 text-white/40 text-xs px-2 py-0.5 rounded-full">
+                {t.status}
+              </span>
+            </div>
           </div>
 
           <div className="md:grid md:grid-cols-2 gap-0">
@@ -144,54 +156,56 @@ export default function ComingSoon({ language }: ComingSoonProps) {
             </div>
 
             {/* Content side */}
-            <div className="p-6 md:p-8 flex flex-col justify-between">
+            <div className="p-6 md:p-8 flex flex-col justify-between bg-[#1e1e1e]">
               <div>
-                <p className="text-accent text-xs font-semibold uppercase tracking-widest mb-2">
+                <p className="text-accent/80 text-xs font-medium uppercase tracking-wider mb-3">
                   {project.tagline[language]}
                 </p>
-                <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 leading-tight">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
                   {project.title[language]}
                 </h3>
-                <p className="text-sm text-white/60 leading-relaxed mb-6">
+                <p className="text-sm text-white/50 leading-relaxed mb-6">
                   {project.description[language]}
                 </p>
 
                 {/* Features list */}
-                <ul className="space-y-2 mb-6">
+                <ul className="grid grid-cols-2 gap-x-4 gap-y-2 mb-6">
                   {project.features[language].map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-white/60">
-                      <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
+                    <li key={i} className="flex items-center gap-2 text-sm text-white/50">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#28c840] flex-shrink-0" />
                       {feature}
                     </li>
                   ))}
                 </ul>
 
                 {/* Tech logos */}
-                <div className="flex flex-wrap gap-3 mb-6">
+                <div className="flex flex-wrap items-center gap-4 mb-6 p-3 rounded-lg bg-white/5 border border-white/5">
+                  <span className="text-xs text-white/30 font-medium">{t.builtWith}:</span>
                   {project.technologies.map((tech) => (
-                    <Image
-                      key={tech.name}
-                      src={tech.logo}
-                      alt={tech.name}
-                      width={22}
-                      height={22}
-                      className="object-contain opacity-70 hover:opacity-100 transition-opacity"
-                      title={tech.name}
-                    />
+                    <div key={tech.name} className="flex items-center gap-1.5 group">
+                      <Image
+                        src={tech.logo}
+                        alt={tech.name}
+                        width={20}
+                        height={20}
+                        className="object-contain opacity-60 group-hover:opacity-100 transition-opacity"
+                      />
+                      <span className="text-xs text-white/40 group-hover:text-white/70 transition-colors">{tech.name}</span>
+                    </div>
                   ))}
                 </div>
               </div>
 
               {/* Buttons */}
-              <div className="flex gap-2 flex-wrap">
+              <div className="flex gap-3 flex-wrap pt-4 border-t border-white/5">
                 {project.githubUrl && (
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium bg-white/8 border border-white/10 text-white/70 hover:bg-white/15 hover:text-white transition-all duration-200"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium bg-[#2d2d2d] border border-white/10 text-white/70 hover:bg-[#3d3d3d] hover:text-white hover:border-white/20 transition-all duration-200"
                   >
-                    <Github size={13} />
+                    <Github size={15} />
                     {t.viewCode}
                   </a>
                 )}
@@ -200,16 +214,12 @@ export default function ComingSoon({ language }: ComingSoonProps) {
                     href={project.previewUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium bg-accent/20 border border-accent/30 text-accent hover:bg-accent/30 transition-all duration-200"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium bg-accent text-white hover:bg-accent/90 transition-all duration-200"
                   >
-                    <ExternalLink size={13} />
+                    <ExternalLink size={15} />
                     {t.viewProject}
                   </a>
                 )}
-                {/* <button className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium bg-white/8 border border-white/10 text-white/50 cursor-default">
-                  <Bell size={13} />
-                  {t.followProgress}
-                </button> */}
               </div>
             </div>
           </div>
