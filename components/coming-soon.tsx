@@ -87,7 +87,7 @@ export default function ComingSoon({ language }: ComingSoonProps) {
           <div className="mt-5 h-px w-24 bg-gradient-to-r from-transparent via-accent/50 to-transparent mx-auto" />
         </div>
 
-        {/* Main card - macOS Window Style */}
+        {/* Main card - macOS Window Style - Horizontal Layout */}
         <div
           ref={cardRef}
           className={`relative rounded-xl border border-white/10 bg-[#1e1e1e] overflow-hidden shadow-2xl transition-all duration-700 ${
@@ -95,18 +95,16 @@ export default function ComingSoon({ language }: ComingSoonProps) {
           }`}
         >
           {/* macOS Window Title Bar */}
-          <div className="flex items-center justify-between px-4 py-3 bg-[#2d2d2d] border-b border-white/5">
+          <div className="flex items-center justify-between px-4 py-2.5 bg-[#2d2d2d] border-b border-white/5">
             {/* Traffic lights */}
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-[#ff5f57] hover:bg-[#ff5f57]/80 transition-colors cursor-pointer" />
-              <div className="w-3 h-3 rounded-full bg-[#febc2e] hover:bg-[#febc2e]/80 transition-colors cursor-pointer" />
-              <div className="w-3 h-3 rounded-full bg-[#28c840] hover:bg-[#28c840]/80 transition-colors cursor-pointer" />
+              <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+              <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
+              <div className="w-3 h-3 rounded-full bg-[#28c840]" />
             </div>
             
             {/* Window title */}
-            <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
-              <span className="text-white/50 text-sm font-medium">{project.title[language]}</span>
-            </div>
+            <span className="text-white/50 text-sm font-medium">{project.title[language]}</span>
 
             {/* Status badges */}
             <div className="flex items-center gap-2">
@@ -114,112 +112,116 @@ export default function ComingSoon({ language }: ComingSoonProps) {
                 <Wrench size={10} />
                 {t.badge}
               </span>
-              <span className="bg-white/5 border border-white/10 text-white/40 text-xs px-2 py-0.5 rounded-full">
-                {t.status}
-              </span>
             </div>
           </div>
 
-          <div className="md:grid md:grid-cols-2 gap-0">
-            {/* Image side */}
-            <div className="relative h-60 md:h-auto overflow-hidden">
+          {/* Content - Horizontal layout */}
+          <div className="flex flex-col lg:flex-row">
+            {/* Image - Left side, smaller */}
+            <div className="relative w-full lg:w-2/5 h-48 lg:h-auto lg:min-h-[280px] flex-shrink-0">
               <Image
                 src={project.image}
                 alt={project.title[language]}
                 fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover object-top"
+                sizes="(max-width: 1024px) 100vw, 40vw"
               />
-              {/* Overlay with grid pattern to suggest "in progress" */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-              <div
-                className="absolute inset-0 opacity-10"
-                style={{
-                  backgroundImage:
-                    "repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(255,255,255,0.1) 30px, rgba(255,255,255,0.1) 31px), repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(255,255,255,0.1) 30px, rgba(255,255,255,0.1) 31px)",
-                }}
-              />
-
-              {/* Progress bar at bottom of image */}
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <div className="flex items-center justify-between text-xs text-white/70 mb-1.5">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#1e1e1e]/80 hidden lg:block" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1e1e1e] to-transparent lg:hidden" />
+              
+              {/* Progress bar overlay */}
+              <div className="absolute bottom-3 left-3 right-3 lg:bottom-4 lg:left-4 lg:right-4">
+                <div className="flex items-center justify-between text-xs text-white/80 mb-1">
                   <span>Progreso</span>
                   <span className="text-accent font-semibold">{project.progress}%</span>
                 </div>
-                <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                <div className="h-1.5 bg-white/20 rounded-full overflow-hidden backdrop-blur-sm">
                   <div
-                    className="h-full bg-gradient-to-r from-accent to-purple-400 rounded-full transition-all duration-1000"
+                    className="h-full bg-gradient-to-r from-accent to-purple-400 rounded-full"
                     style={{ width: `${project.progress}%` }}
                   />
                 </div>
               </div>
             </div>
 
-            {/* Content side */}
-            <div className="p-6 md:p-8 flex flex-col justify-between bg-[#1e1e1e]">
+            {/* Content - Right side */}
+            <div className="flex-1 p-5 lg:p-6 flex flex-col justify-between">
+              {/* Header */}
               <div>
-                <p className="text-accent/80 text-xs font-medium uppercase tracking-wider mb-3">
-                  {project.tagline[language]}
-                </p>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
-                  {project.title[language]}
-                </h3>
-                <p className="text-sm text-white/50 leading-relaxed mb-6">
+                <div className="flex items-start justify-between gap-4 mb-3">
+                  <div>
+                    <h3 className="text-xl lg:text-2xl font-bold text-white mb-1">
+                      {project.title[language]}
+                    </h3>
+                    <p className="text-accent/70 text-xs font-medium leading-snug">
+                      {project.tagline[language]}
+                    </p>
+                  </div>
+                  <span className="bg-white/5 border border-white/10 text-white/40 text-xs px-2 py-0.5 rounded-full whitespace-nowrap">
+                    {t.status}
+                  </span>
+                </div>
+                
+                <p className="text-sm text-white/50 leading-relaxed mb-4 line-clamp-3">
                   {project.description[language]}
                 </p>
 
-                {/* Features list */}
-                <ul className="grid grid-cols-2 gap-x-4 gap-y-2 mb-6">
-                  {project.features[language].map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-white/50">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#28c840] flex-shrink-0" />
+                {/* Features - Compact horizontal */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.features[language].slice(0, 6).map((feature, i) => (
+                    <span key={i} className="flex items-center gap-1.5 text-xs text-white/50 bg-white/5 px-2 py-1 rounded">
+                      <div className="w-1 h-1 rounded-full bg-[#28c840]" />
                       {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Tech logos */}
-                <div className="flex flex-wrap items-center gap-4 mb-6 p-3 rounded-lg bg-white/5 border border-white/5">
-                  <span className="text-xs text-white/30 font-medium">{t.builtWith}:</span>
-                  {project.technologies.map((tech) => (
-                    <div key={tech.name} className="flex items-center gap-1.5 group">
-                      <Image
-                        src={tech.logo}
-                        alt={tech.name}
-                        width={20}
-                        height={20}
-                        className="object-contain opacity-60 group-hover:opacity-100 transition-opacity"
-                      />
-                      <span className="text-xs text-white/40 group-hover:text-white/70 transition-colors">{tech.name}</span>
-                    </div>
+                    </span>
                   ))}
                 </div>
               </div>
 
-              {/* Buttons */}
-              <div className="flex gap-3 flex-wrap pt-4 border-t border-white/5">
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium bg-[#2d2d2d] border border-white/10 text-white/70 hover:bg-[#3d3d3d] hover:text-white hover:border-white/20 transition-all duration-200"
-                  >
-                    <Github size={15} />
-                    {t.viewCode}
-                  </a>
-                )}
-                {project.previewUrl && (
-                  <a
-                    href={project.previewUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium bg-accent text-white hover:bg-accent/90 transition-all duration-200"
-                  >
-                    <ExternalLink size={15} />
-                    {t.viewProject}
-                  </a>
-                )}
+              {/* Footer - Tech + Buttons */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-3 border-t border-white/5">
+                {/* Tech logos */}
+                <div className="flex items-center gap-3">
+                  <span className="text-xs text-white/30">{t.builtWith}:</span>
+                  <div className="flex items-center gap-2">
+                    {project.technologies.map((tech) => (
+                      <Image
+                        key={tech.name}
+                        src={tech.logo}
+                        alt={tech.name}
+                        width={18}
+                        height={18}
+                        className="object-contain opacity-60 hover:opacity-100 transition-opacity"
+                        title={tech.name}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Buttons */}
+                <div className="flex gap-2">
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-[#2d2d2d] border border-white/10 text-white/70 hover:bg-[#3d3d3d] hover:text-white transition-all"
+                    >
+                      <Github size={13} />
+                      {t.viewCode}
+                    </a>
+                  )}
+                  {project.previewUrl && (
+                    <a
+                      href={project.previewUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-accent text-white hover:bg-accent/90 transition-all"
+                    >
+                      <ExternalLink size={13} />
+                      {t.viewProject}
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </div>
