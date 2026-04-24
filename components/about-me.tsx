@@ -13,22 +13,22 @@ const translations = {
   es: {
     title: "Sobre Mí",
     description:
-      "Desarrollo aplicaciones web completas, desde el diseño del mockoup para el Front-End, hasta el diseño de la base de datos y la lógica del servidor para el Back-End. Pero, me gusta más el back-end y me estoy especializando en ello.",
+      "Desarrollo aplicaciones web completas, desde el diseño del mockoup para el Front-End, hasta el diseño de la base de datos y la lógica del servidor para el Back-End. Con una fuerte especialización en el frontend",
     location: "Córdoba, Argentina",
     experience: "2+ años de experiencia",
     passion: "Apasionado por la tecnología",
-    interests: ["Desarrollo Web", "back-end", "Inteligencia Artificial", "front-end"],
+    interests: ["Desarrollo Web", "Front-end", "FullStack", "Back-end"],
     personalNote:
-      "Cuando no estoy programando, disfruto aprender nuevas tecnologías, ir a eventos tecnológicos o hackatones y resolver retos de programación.",
+      "Cuando no estoy programando, disfruto aprender nuevas tecnologías, ir a eventos tecnológicos o hackathones y resolver retos de programación.",
   },
   en: {
     title: "About Me",
     description:
-      "I develop complete web applications, from designing the mockup for the front end to designing the database and server logic for the back end. However, I prefer the back end and am specializing in it.",
+      "I develop complete web applications, from front-end mockup design to back-end database design and server logic. I have a strong specialization in front-end development.",
     location: "City, Country",
     experience: "2+ years of experience",
     passion: "Passionate about technology",
-    interests: ["Web Development", "back-end", "Artificial Intelligence", "front-end"],
+    interests: ["Web Development", "Front-end", "Full-stack", "Back-end"],
     personalNote:
       "When I'm not coding, I enjoy learning new technologies, attending tech events or hackathons, and solving coding challenges.",
   },
