@@ -1,33 +1,34 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import { Suspense } from "react"
-import "./globals.css"
+import type React from "react";
+import type { Metadata } from "next";
+import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { Suspense } from "react";
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   weight: ["300", "400", "500", "600", "700"],
-})
+});
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
   weight: ["400", "500", "600", "700"],
-})
+});
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
   weight: ["400", "500", "600"],
-})
+});
 
 export const metadata: Metadata = {
-  title: "Portfolio — Facundo Nicolás Guzmán Olariaga",
+  title:
+    "Desarrollador Fullstack | Especialista en Angular | Técnico Universitario en Programación",
   description:
     "Desarrollador argentino apasionado por la arquitectura limpia y el tipado fuerte. Especializado en la creación de aplicaciones escalables dentro del ecosistema Angular.",
-  
+
   keywords: [
     "facundo guzmán",
     "desarrollador angular",
@@ -61,7 +62,8 @@ export const metadata: Metadata = {
     locale: "es_ES",
     alternateLocale: ["en_US"],
     url: "https://facundo-nicolas-guzman-olariaga.vercel.app/",
-    title: "Portfolio — Facundo Nicolás Guzmán Olariaga",
+    title:
+      "Desarrollador Fullstack | Especialista en Angular | Técnico Universitario en Programación",
     description:
       "Desarrollador argentino enfocado en arquitectura limpia y tipado fuerte. Creación de aplicaciones escalables con Angular.",
     siteName: "Portfolio Facundo Guzmán",
@@ -80,7 +82,9 @@ export const metadata: Metadata = {
     title: "Portfolio — Facundo Nicolás Guzmán Olariaga",
     description:
       "Desarrollador argentino especializado en Angular, clean architecture y aplicaciones escalables.",
-    images: ["https://res.cloudinary.com/di5ron95z/image/upload/v1776889197/Facundo_Nicol%C3%A1s_Guzm%C3%A1n_Olariaga.png"],
+    images: [
+      "https://res.cloudinary.com/di5ron95z/image/upload/v1776889197/Facundo_Nicol%C3%A1s_Guzm%C3%A1n_Olariaga.png",
+    ],
   },
 
   robots: {
@@ -109,11 +113,13 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="es">
-      <body className={`font-sans ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}>
+      <body
+        className={`font-sans ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}
+      >
         {/* Animated background layers */}
         <div className="animated-bg" aria-hidden="true" />
         <div className="animated-bg-waves" aria-hidden="true" />
@@ -121,5 +127,5 @@ export default function RootLayout({
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
